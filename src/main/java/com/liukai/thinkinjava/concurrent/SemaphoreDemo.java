@@ -83,7 +83,7 @@ class CheckOutTask<T> implements Runnable {
         try {
             T item = pool.checkOut();
             System.out.println(this + " checked out " + item);
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(10);
             System.out.println(this + " checked in " + item);
             pool.checkIn(item);
         } catch (InterruptedException e) {
@@ -93,7 +93,7 @@ class CheckOutTask<T> implements Runnable {
 
     @Override
     public String toString() {
-        return "CheckOutTask id: " + id;
+        return Thread.currentThread().getName() + " CheckOutTask id: " + id;
     }
 }
 
@@ -108,7 +108,7 @@ class Fat {
 
     public Fat() {
         for (int i = 0; i < 10000; i++) {
-            d += (Math.PI + Math.E) / (double) d;
+            d += (Math.PI + Math.E) / d;
         }
     }
 
